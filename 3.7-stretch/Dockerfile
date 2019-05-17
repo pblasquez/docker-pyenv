@@ -28,14 +28,18 @@ RUN PYENV_VERSION="v1.2.11" \
     && git checkout -q ${PYENV_PIP_MIGRATE_VERSION} \
     && rm -r "$PYENV_ROOT/.git" && rm -rf " $PYENV_PIP_MIGRATE_DIR/.git"
 
-RUN PYTHON2_VERSION="2.7.16" \
-    && PYTHON34_VERSION="3.4.10" \
-    && PYTHON35_VERSION="3.5.7" \
-    && PYTHON36_VERSION="3.6.8" \
-    && PYTHON37_VERSION="3.7.3" \
+RUN PYTHON2_VERSION="2.7.15" \
+    && PYTHON34_VERSION="3.4.9" \
+    && PYTHON35_VERSION="3.5.6" \
+    && PYTHON36_VERSION="3.6.7" \
+    && PYTHON37_VERSION="3.7.1" \
+    && PYPY2_VERSION="pypy2.7-6.0.0" \
+    && PYPY35_VERSION="pypy3.5-6.0.0" \
     && pyenv install "$PYTHON2_VERSION" \
     && pyenv install "$PYTHON34_VERSION" \
     && pyenv install "$PYTHON35_VERSION" \
     && pyenv install "$PYTHON36_VERSION" \
     && pyenv install "$PYTHON37_VERSION" \
-    && pyenv global system "$PYTHON2_VERSION" "$PYTHON37_VERSION" "$PYTHON36_VERSION" "$PYTHON35_VERSION" "$PYTHON34_VERSION"
+    && pyenv install "$PYPY2_VERSION" \
+    && pyenv install "$PYPY35_VERSION" \
+    && pyenv global system "$PYTHON2_VERSION" "$PYTHON37_VERSION" "$PYTHON36_VERSION" "$PYTHON35_VERSION" "$PYTHON34_VERSION" "$PYPY2_VERSION" "$PYPY35_VERSION"
