@@ -5,8 +5,6 @@ RUN pip install pip==19.0.3
 ENV PYENV_ROOT /opt/pyenv
 ENV PATH "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
-ENV CONCHOID_DOCKER_PYENV_HOME /conchoid/docker-pyenv
-
 RUN apt-get update \
     && apt-get install -y \
         locales curl gcc git g++ libbz2-dev libsqlite3-dev libssl1.0-dev libreadline-dev make zlib1g-dev libffi-dev \
@@ -22,6 +20,7 @@ RUN PYENV_VERSION="v1.2.11" \
     && git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT" \
     && cd "$PYENV_ROOT" \
     && git checkout -q ${PYENV_VERSION} \
+    && git clone https://github.com/pyenv/pyenv-virtualenv "$PYENV_ROOT/plugins/pyenv-virtualenv" \
     && PYENV_PIP_MIGRATE_VERSION="88f09de2a06f95bd1933b950ec2b66671ae36fbd" \
     && PYENV_PIP_MIGRATE_DIR="$PYENV_ROOT/plugins/pyenv-pip-migrate" \
     && git clone https://github.com/pyenv/pyenv-pip-migrate.git "$PYENV_PIP_MIGRATE_DIR" \
