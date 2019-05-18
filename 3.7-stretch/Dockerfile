@@ -42,4 +42,8 @@ RUN PYTHON2_VERSION="2.7.15" \
     && pyenv install "$PYTHON37_VERSION" \
     && pyenv install "$PYPY2_VERSION" \
     && pyenv install "$PYPY35_VERSION" \
-    && pyenv global system "$PYTHON2_VERSION" "$PYTHON37_VERSION" "$PYTHON36_VERSION" "$PYTHON35_VERSION" "$PYTHON34_VERSION" "$PYPY2_VERSION" "$PYPY35_VERSION"
+    && pyenv global system "$PYTHON2_VERSION" "$PYTHON37_VERSION" "$PYTHON36_VERSION" "$PYTHON35_VERSION" "$PYTHON34_VERSION" "$PYPY2_VERSION" "$PYPY35_VERSION" \
+    && pyenv local $PYTHON2_VERSION \
+    && pip install virtualenv \
+    && pyenv local $PYPY2_VERSION \
+    && pip install virtualenv \
